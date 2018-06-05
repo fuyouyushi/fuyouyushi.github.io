@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Zane&#39;s Home">
 <meta property="og:description" content="hexo 的安装homebrew 的安装终端安装命令:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T11:13:35.567Z">
+<meta property="og:updated_time" content="2018-06-05T11:25:00.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 的安装和配置">
 <meta name="twitter:description" content="hexo 的安装homebrew 的安装终端安装命令:">
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Created: 2018-06-05 16:54:51 / Modified: 19:13:35" itemprop="dateCreated datePublished" datetime="2018-06-05T16:54:51+08:00">2018-06-05</time>
+              <time title="Created: 2018-06-05 16:54:51 / Modified: 19:25:00" itemprop="dateCreated datePublished" datetime="2018-06-05T16:54:51+08:00">2018-06-05</time>
             
 
             
@@ -377,8 +377,7 @@
 <p>安装完成后，可以输入下面命令开启 hexo 服务，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 <p>开启之后在 本地地址可以进行预览 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>.</p>
-<h2 id="关联github"><a href="#关联github" class="headerlink" title="关联github"></a>关联github</h2><p>在github 上面新建一个Repository，名字为${github用户名}.github.io, 例如: <strong>fuyouyushi.github.io</strong> </p>
-<p>在刚才创建的myhexo 文件下面打开 _config.xml 文件，在最后进行编辑</p>
+<h2 id="关联github"><a href="#关联github" class="headerlink" title="关联github"></a>关联github</h2><p>在github 上面新建一个Repository，名字为${github用户名}.github.io, 例如: <strong>fuyouyushi.github.io</strong><br><br>在刚才创建的myhexo 文件下面打开 _config.xml 文件，在最后进行编辑</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/fuyouyushi/fuyouyushi.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>在myhexo 目录下执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
@@ -386,8 +385,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>如果遇到提示 <strong>ERROR Deployer not found: git</strong>, 则先执行以下命令再执行<strong>hexo d</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>期间需要输入 github 的用户名和密码.</p>
-<p>至此，可以利用github pages + hexo建立一个初步的个人博客。</p>
+<p>期间需要输入 github 的用户名和密码.<br><br>至此，可以利用github pages + hexo建立一个初步的个人博客。</p>
 <h2 id="TODO-list"><a href="#TODO-list" class="headerlink" title="TODO list:"></a>TODO list:</h2><ul>
 <li>ssh 的添加</li>
 </ul>
