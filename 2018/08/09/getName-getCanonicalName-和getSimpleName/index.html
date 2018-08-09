@@ -108,23 +108,25 @@
 
 
 
-  <meta name="description" content="寄蜉蝣于天地，渺沧海之一粟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zane&#39;s Home">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="先定义一个类和一个它的内部类: 12345678class Name &amp;#123;  class InnerClass &amp;#123;  &amp;#125;    void printName() &amp;#123;      &amp;#125;&amp;#125; 外部类的差别先打印出Name 的getName(), getCanonicalName()和getSimpleName() 这三个的值： 123System.o">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 中的getName(), getCanonicalName()和getSimpleName()">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/getName-getCanonicalName-和getSimpleName/index.html">
 <meta property="og:site_name" content="Zane&#39;s Home">
-<meta property="og:description" content="寄蜉蝣于天地，渺沧海之一粟">
+<meta property="og:description" content="先定义一个类和一个它的内部类: 12345678class Name &amp;#123;  class InnerClass &amp;#123;  &amp;#125;    void printName() &amp;#123;      &amp;#125;&amp;#125; 外部类的差别先打印出Name 的getName(), getCanonicalName()和getSimpleName() 这三个的值： 123System.o">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-09T11:23:34.762Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zane&#39;s Home">
-<meta name="twitter:description" content="寄蜉蝣于天地，渺沧海之一粟">
+<meta name="twitter:title" content="Java 中的getName(), getCanonicalName()和getSimpleName()">
+<meta name="twitter:description" content="先定义一个类和一个它的内部类: 12345678class Name &amp;#123;  class InnerClass &amp;#123;  &amp;#125;    void printName() &amp;#123;      &amp;#125;&amp;#125; 外部类的差别先打印出Name 的getName(), getCanonicalName()和getSimpleName() 这三个的值： 123System.o">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/09/getName-getCanonicalName-和getSimpleName/"/>
 
 
 
@@ -134,7 +136,7 @@
   };
 </script>
 
-  <title>Zane's Home</title>
+  <title>Java 中的getName(), getCanonicalName()和getSimpleName() | Zane's Home</title>
   
 
 
@@ -181,8 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -219,7 +220,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -263,9 +264,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -297,11 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/getName-getCanonicalName-和getSimpleName/" itemprop="url">
-                  Java 中的getName(), getCanonicalName()和getSimpleName()
-                </a>
+          <h1 class="post-title" itemprop="name headline">Java 中的getName(), getCanonicalName()和getSimpleName()
               
             
           </h1>
@@ -376,9 +373,7 @@
       
 
       
-        
-          
-            <p>先定义一个类和一个它的内部类:</p>
+        <p>先定义一个类和一个它的内部类:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Name &#123;</span><br><span class="line">  class InnerClass &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  void printName() &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="外部类的差别"><a href="#外部类的差别" class="headerlink" title="外部类的差别"></a>外部类的差别</h1><p>先打印出Name 的getName(), getCanonicalName()和getSimpleName() 这三个的值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Name.class.getName());</span><br><span class="line">System.out.println(Name.class.getCanonicalName());</span><br><span class="line">System.out.println(Name.class.getSimpleName());</span><br></pre></td></tr></table></figure>
@@ -450,8 +445,6 @@
 </tbody>
 </table>
 
-          
-        
       
     </div>
 
@@ -469,350 +462,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/编写一个Android本地Gradle插件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zane Lee">
-      <meta itemprop="description" content="寄蜉蝣于天地，渺沧海之一粟">
-      <meta itemprop="image" content="/images/Druid.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zane's Home">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/10/编写一个Android本地Gradle插件/" itemprop="url">
-                  编写一个Android本地Gradle插件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-10 18:02:10" itemprop="dateCreated datePublished" datetime="2018-07-10T18:02:10+08:00">2018-07-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-11 09:53:36" itemprop="dateModified" datetime="2018-07-11T09:53:36+08:00">2018-07-11</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/07/10/编写一个Android本地Gradle插件/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/07/10/编写一个Android本地Gradle插件/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>本文主要讲述如何创建一个可以在本地使用的 gradle 插件。具体步骤如下文所示:</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/10/编写一个Android本地Gradle插件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/10/编写一个Android本地Gradle插件/" rel="next" title="编写一个Android本地Gradle插件">
+                <i class="fa fa-chevron-left"></i> 编写一个Android本地Gradle插件
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/hexo 的安装和配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zane Lee">
-      <meta itemprop="description" content="寄蜉蝣于天地，渺沧海之一粟">
-      <meta itemprop="image" content="/images/Druid.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zane's Home">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/05/hexo 的安装和配置/" itemprop="url">
-                  Hexo 的安装和配置
-                </a>
-              
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-06-05 16:54:51" itemprop="dateCreated datePublished" datetime="2018-06-05T16:54:51+08:00">2018-06-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-06-06 11:07:50" itemprop="dateModified" datetime="2018-06-06T11:07:50+08:00">2018-06-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/05/hexo 的安装和配置/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/05/hexo 的安装和配置/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="hexo-的安装"><a href="#hexo-的安装" class="headerlink" title="hexo 的安装"></a>hexo 的安装</h2><h3 id="homebrew-的安装"><a href="#homebrew-的安装" class="headerlink" title="homebrew 的安装"></a>homebrew 的安装</h3><p>终端安装命令:</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/05/hexo 的安装和配置/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -822,171 +501,29 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zane Lee">
-      <meta itemprop="description" content="寄蜉蝣于天地，渺沧海之一粟">
-      <meta itemprop="image" content="/images/Druid.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zane's Home">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/05/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-06-05 16:12:15 / 修改时间：19:13:19" itemprop="dateCreated datePublished" datetime="2018-06-05T16:12:15+08:00">2018-06-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/05/hello-world/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/05/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/05/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1007,8 +544,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1070,6 +616,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#外部类的差别"><span class="nav-number">1.</span> <span class="nav-text">外部类的差别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类的差别"><span class="nav-number">2.</span> <span class="nav-text">内部类的差别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匿名内部类的差别"><span class="nav-number">3.</span> <span class="nav-text">匿名内部类的差别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组对象差别"><span class="nav-number">4.</span> <span class="nav-text">数组对象差别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1204,6 +766,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 
@@ -1218,6 +784,23 @@
     <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2018/08/09/getName-getCanonicalName-和getSimpleName/';
+        this.page.identifier = '2018/08/09/getName-getCanonicalName-和getSimpleName/';
+        this.page.title = 'Java 中的getName(), getCanonicalName()和getSimpleName()';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
