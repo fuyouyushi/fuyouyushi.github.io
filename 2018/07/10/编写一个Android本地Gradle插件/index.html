@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文主要讲述如何创建一个可以在本地使用的 gradle 插件。具体步骤如下文所示:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写一个Android本地Gradle插件">
+<meta property="og:url" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Zane&#39;s Home">
+<meta property="og:description" content="本文主要讲述如何创建一个可以在本地使用的 gradle 插件。具体步骤如下文所示:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/5.png">
+<meta property="article:published_time" content="2018-07-10T10:02:10.000Z">
+<meta property="article:modified_time" content="2023-11-12T12:03:23.837Z">
+<meta property="article:author" content="Zane Lee">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Gradle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/1.png">
+
+
+<link rel="canonical" href="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/","path":"2018/07/10/编写一个Android本地Gradle插件/","title":"编写一个Android本地Gradle插件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>编写一个Android本地Gradle插件 | Zane's Home</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Zane's Home</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9build-gradle"><span class="nav-number">1.</span> <span class="nav-text">修改build.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Groovy-%E7%9B%AE%E5%BD%95%E5%92%8C-resources-%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">创建 Groovy 目录和 resources 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-Groovy-%E6%96%87%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%92%8C-properties-%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">添加 Groovy 文件实现 和 properties 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%9C%AC%E5%9C%B0%E7%9A%84gradle-%E6%8F%92%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">生成本地的gradle 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="nav-number">5.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">6.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zane Lee</p>
+  <div class="site-description" itemprop="description">寄蜉蝣于天地，渺沧海之一粟</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zane Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zane's Home">
+      <meta itemprop="description" content="寄蜉蝣于天地，渺沧海之一粟">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="编写一个Android本地Gradle插件 | Zane's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          编写一个Android本地Gradle插件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-07-10 18:02:10" itemprop="dateCreated datePublished" datetime="2018-07-10T18:02:10+08:00">2018-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-12 20:03:23" itemprop="dateModified" datetime="2023-11-12T20:03:23+08:00">2023-11-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文主要讲述如何创建一个可以在本地使用的 gradle 插件。具体步骤如下文所示:</p>
+<span id="more"></span>
+
+
+<h3 id="修改build-gradle"><a href="#修改build-gradle" class="headerlink" title="修改build.gradle"></a>修改build.gradle</h3><p>删除该 library 下的build.gradle 里面的内容， 修改为以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;groovy&#x27;</span><br><span class="line">apply plugin: &#x27;maven&#x27;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile gradleApi()</span><br><span class="line">    compile localGroovy()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uploadArchives &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            pom.groupId = &#x27;com.test.plugin&#x27;</span><br><span class="line">            pom.version = &#x27;1.0.0&#x27;</span><br><span class="line">            pom.artifactId = &#x27;gradle-plugin-demo&#x27;</span><br><span class="line">            repository (url : uri(&#x27;../release&#x27;))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中在uploadArchives中， pom.groupId定义了该插件的 groupId, pom.version 定义了插件的版本号，pom.artifactId 定义了插件的id。 repository (url : uri(‘..&#x2F;release’)) 标明插件会生成在本地的和JavaLibrary 平级的 release文件下。</p>
+<h3 id="创建-Groovy-目录和-resources-目录"><a href="#创建-Groovy-目录和-resources-目录" class="headerlink" title="创建 Groovy 目录和 resources 目录"></a>创建 Groovy 目录和 resources 目录</h3><ol>
+<li>从File -&gt; New Module… 中选择Java Library, 创建一个 JavaLibrary.</li>
+<li>删除 src&#x2F;main 下面的所有文件夹和文件.</li>
+<li>在 main 下面创建 groovy 目录，这个目录将用来放置之后编写的 gradle 插件的groovy 文件；</li>
+<li>在 main 下面创建 resources 目录，之下依次创建 META-INF&#x2F;gradle-plugins 目录</li>
+</ol>
+<p>目录创建好之后如图所示：</p>
+<img src="/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/1.png" width="50%" height="50%" align="“left”/">
+
+<h3 id="添加-Groovy-文件实现-和-properties-文件"><a href="#添加-Groovy-文件实现-和-properties-文件" class="headerlink" title="添加 Groovy 文件实现 和 properties 文件"></a>添加 Groovy 文件实现 和 properties 文件</h3><ul>
+<li>在上一步创建好的文件下安装自己的习惯创建目录，并创建 groovy 文件，例如 DemoPlugin.groovy 文件。groovy 文件内容如下所示:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.demo</span><br><span class="line"></span><br><span class="line">import org.gradle.api.Plugin</span><br><span class="line">import org.gradle.api.Project;</span><br><span class="line"></span><br><span class="line">public class DemoPlugin implements Plugin&lt;Project&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) &#123;</span><br><span class="line">        project.task(&#x27;demoPrint&#x27;) &lt;&lt; &#123;</span><br><span class="line">            println &#x27;this is a gradle plugin demo&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个文件主要内容是创建了一个 “demoPrint” 的task。这个task 进行的操作就是输出 “this is a gradle plugin demo” 这个信息。</p>
+<ul>
+<li>在之前创建 resources&#x2F;META-INF&#x2F;gradle-plugins 创建 properties 文件，文件的前缀应该保持和 pluginId 一致。比如之前我们创建的 pluginId 为pom.artifactId 的值“gradle-plugin-demo”，所以这里应该创建一个名为<br>gradle-plugin-demo.properties 的文件。文件内容如下所示，主要是声明了所实现的插件的路径</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-class=com.demo.DemoPlugin</span><br></pre></td></tr></table></figure>
+
+<p>经过以上两步之后，目录结构如下:</p>
+<img src="/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/2.png" width="50%" height="50%" align="“left”/">
+
+
+<h3 id="生成本地的gradle-插件"><a href="#生成本地的gradle-插件" class="headerlink" title="生成本地的gradle 插件"></a>生成本地的gradle 插件</h3><p>由于在build.gralde 配置了 uploadArchives 的相关内容，所以可以在本次生成编写的gradle 插件。在该项目中的所有gradle任务中，可以看到如下的任务:</p>
+<img src="/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/3.png" width="50%" height="50%" align="“left”/">
+
+<p>双击运行 uploadArchives任务，可以在之前定义的 release 目录下生成了本次的gradle 插件，内容如下图所示:</p>
+<img src="/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/4.png" width="50%" height="50%" align="“left”/">
+
+
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><p>按照之前的步骤，已经在本次生成了gradle 插件。为了验证编写插件的正确性，可以把它添加到 app module中进行验证。打开 app 模块下的build.gradle, 修改为以下形式: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.android.application&#x27;</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url uri(&#x27;../release&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.test.plugin:gradle-plugin-demo:1.0.0&#x27;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apply plugin: &#x27;gradle-plugin-demo&#x27;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>点击 “sync now” 进行同步之后，在命令行敲击 “.&#x2F;gradlew demoPrint”, 执行定义好的 demoPrint 任务，可以看到以下输出内容:</p>
+<img src="/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/5.png" width="50%" height="50%" align="“left”/">
+
+<p>证明自己定义的task 确实生效了，得到了有效的执行。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>在编写中遇到了 “Plugin id ‘gradle-plugin-demo’ not found” 之类的提示，后来经过排查发现是因为 “META-INF” 这个文件夹创建时放错了位置，我把它创建在了和main 平级的目录中，应当放在 main 文件夹下。所以相关的文件在创建时，要注意目录顺序。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+              <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/08/09/getName-getCanonicalName-%E5%92%8CgetSimpleName/" rel="next" title="Java 中的getName(), getCanonicalName()和getSimpleName()">
+                  Java 中的getName(), getCanonicalName()和getSimpleName() <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Zane Lee</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

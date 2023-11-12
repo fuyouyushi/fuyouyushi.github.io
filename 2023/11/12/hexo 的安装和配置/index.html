@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="hexo 的安装homebrew 的安装终端安装命令:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 的安装和配置">
+<meta property="og:url" content="http://yoursite.com/2023/11/12/hexo%20%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Zane&#39;s Home">
+<meta property="og:description" content="hexo 的安装homebrew 的安装终端安装命令:">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-12T12:03:23.837Z">
+<meta property="article:modified_time" content="2023-11-12T12:03:23.837Z">
+<meta property="article:author" content="Zane Lee">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/2023/11/12/hexo%20%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://yoursite.com/2023/11/12/hexo%20%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/","path":"2023/11/12/hexo 的安装和配置/","title":"Hexo 的安装和配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo 的安装和配置 | Zane's Home</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Zane's Home</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">hexo 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#homebrew-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">homebrew 的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Nodejs"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Nodejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-git"><span class="nav-number">1.3.</span> <span class="nav-text">安装 git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo"><span class="nav-number">1.4.</span> <span class="nav-text">安装hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E8%81%94github"><span class="nav-number">2.</span> <span class="nav-text">关联github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">下载主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDNext-%E4%B8%BB%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">下载Next 主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AENext-%E4%B8%BB%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">配置Next 主题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheme-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.1.</span> <span class="nav-text">Scheme 配置:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">设置头像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-list"><span class="nav-number">4.</span> <span class="nav-text">TODO list:</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zane Lee</p>
+  <div class="site-description" itemprop="description">寄蜉蝣于天地，渺沧海之一粟</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/11/12/hexo%20%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zane Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zane's Home">
+      <meta itemprop="description" content="寄蜉蝣于天地，渺沧海之一粟">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hexo 的安装和配置 | Zane's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 的安装和配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-12 20:03:23" itemprop="dateCreated datePublished" datetime="2023-11-12T20:03:23+08:00">2023-11-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="hexo-的安装"><a href="#hexo-的安装" class="headerlink" title="hexo 的安装"></a>hexo 的安装</h2><h3 id="homebrew-的安装"><a href="#homebrew-的安装" class="headerlink" title="homebrew 的安装"></a>homebrew 的安装</h3><p>终端安装命令:</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>安装结束后，检测安装结果。终端检测命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew doctor   </span><br><span class="line">//(输出 “Your system is ready to brew” 表示homebrew成功)</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Nodejs"><a href="#安装-Nodejs" class="headerlink" title="安装 Nodejs"></a>安装 Nodejs</h3><p>使用homebrew 安装Nodejs. 终端安装命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install node</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h3><p>mac 自带git, 此步跳过</p>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>终端安装命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo</span><br></pre></td></tr></table></figure>
+
+<p>初始化hexo 到一个指定的目录(我的自定义目录为myhexo)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init myhexo</span><br></pre></td></tr></table></figure>
+
+<p>进入myhexo， 进行安装npm</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，可以输入下面命令开启 hexo 服务，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+
+<p>开启之后在 本地地址可以进行预览 <a href="http://localhost:4000/">http://localhost:4000/</a>.</p>
+<h2 id="关联github"><a href="#关联github" class="headerlink" title="关联github"></a>关联github</h2><p>在github 上面新建一个Repository，名字为${github用户名}.github.io, 例如: <strong>fuyouyushi.github.io</strong><br><br>在刚才创建的myhexo 文件下面打开 _config.xml 文件，在最后进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/fuyouyushi/fuyouyushi.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>在myhexo 目录下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+
+<p>接下来执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+<p>如果遇到提示 <strong>ERROR Deployer not found: git</strong>, 则先执行以下命令再执行<strong>hexo d</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>期间需要输入 github 的用户名和密码.<br><br>至此，可以利用github pages + hexo建立一个初步的个人博客。</p>
+<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><h3 id="下载Next-主题"><a href="#下载Next-主题" class="headerlink" title="下载Next 主题"></a>下载Next 主题</h3><p>hexo的主题网站<a href="https://hexo.io/themes/index.html">https://hexo.io/themes/index.html</a>. 里面列出了各种样式的主题。以<strong>Next</strong> 主题为例：<br><br>进入到Hexo 站点目录下(之前我创建的为myhexo 目录)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd myhexo</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>下载完成后，打开配置文件***_config.yml***, 修改theme 为next</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<p>之后命令行先进行clean, 再启动本地服务器可以在本地 <a href="http://localhost:4000/">http://localhost:4000/</a>, 预览next主题的效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo s -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置Next-主题"><a href="#配置Next-主题" class="headerlink" title="配置Next 主题"></a>配置Next 主题</h3><p>针对于Next 主题的配置需要修改的是 themes&#x2F;next 目录下的_config.yml 文件</p>
+<h4 id="Scheme-配置"><a href="#Scheme-配置" class="headerlink" title="Scheme 配置:"></a>Scheme 配置:</h4><p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观.</p>
+<ul>
+<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白</li>
+<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观</li>
+<li>Pisces - 双栏 Scheme，小家碧玉似的清新</li>
+</ul>
+<p>搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 # 去除即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h4><p>修改字段 avatar， 值设置成头像的链接地址。其中，头像的链接地址可以是</p>
+<ul>
+<li>完整的互联网 URI， 例如 <a href="http://example.com/avatar.png">http://example.com/avatar.png</a></li>
+<li>站点内的地址. 将头像放置主题目录下的 source&#x2F;uploads&#x2F; (新建 uploads 目录若不存在).配置为：avatar: &#x2F;uploads&#x2F;avatar.png; 或者 放置在 source&#x2F;images&#x2F; 目录下, 配置为：avatar: &#x2F;images&#x2F;avatar.png</li>
+</ul>
+<h2 id="TODO-list"><a href="#TODO-list" class="headerlink" title="TODO list:"></a>TODO list:</h2><ul>
+<li>ssh 的添加</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/08/09/getName-getCanonicalName-%E5%92%8CgetSimpleName/" rel="prev" title="Java 中的getName(), getCanonicalName()和getSimpleName()">
+                  <i class="fa fa-angle-left"></i> Java 中的getName(), getCanonicalName()和getSimpleName()
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/11/12/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Zane Lee</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

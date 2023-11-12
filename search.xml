@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>I am back</title>
+    <url>/2023/11/12/I-am-back/</url>
+    <content><![CDATA[<p>I am back !!!!</p>
+<span id="more"></span>
+<p>New day.New start!</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java 中的getName(), getCanonicalName()和getSimpleName()</title>
+    <url>/2018/08/09/getName-getCanonicalName-%E5%92%8CgetSimpleName/</url>
+    <content><![CDATA[<p>先定义一个类和一个它的内部类:</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Name &#123;</span><br><span class="line">  class InnerClass &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  void printName() &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="外部类的差别"><a href="#外部类的差别" class="headerlink" title="外部类的差别"></a>外部类的差别</h1><p>先打印出Name 的getName(), getCanonicalName()和getSimpleName() 这三个的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println(Name.class.getName());</span><br><span class="line">System.out.println(Name.class.getCanonicalName());</span><br><span class="line">System.out.println(Name.class.getSimpleName());</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.testjava.testclassname.Name</span><br><span class="line">com.testjava.testclassname.Name</span><br><span class="line">Name</span><br></pre></td></tr></table></figure>
+
+<p>结论：可以看到对于一个外部类， getName() 和 getCanonicalName() 结果一样，都打印出了包含类的包名的路径，getSimpleName() 只打印出了不包含路径的简单的类名。</p>
+<h1 id="内部类的差别"><a href="#内部类的差别" class="headerlink" title="内部类的差别"></a>内部类的差别</h1><p>打印逻辑如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println(Name.InnerClass.class.getName());</span><br><span class="line">System.out.println(Name.InnerClass.class.getCanonicalName());</span><br><span class="line">System.out.println(Name.InnerClass.class.getSimpleName());</span><br></pre></td></tr></table></figure>
+
+<p>输出结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.testjava.testclassname.Name$InnerClass</span><br><span class="line">com.testjava.testclassname.Name.InnerClass</span><br><span class="line">InnerClass</span><br></pre></td></tr></table></figure>
+
+<p>结论：从结果看，getName() 使用了 <em>Name$InnerClass</em> 来标识InnerClass 是Name 的一个内部类，getCanonicalName() 则仍是打印出了和外部类一样的包名和路径，getSimpleName() 仍然只是打印出了简单的类名。</p>
+<h1 id="匿名内部类的差别"><a href="#匿名内部类的差别" class="headerlink" title="匿名内部类的差别"></a>匿名内部类的差别</h1><p>打印逻辑如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class MyClassName &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    new Name() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      void printName() &#123;</span><br><span class="line">        System.out.println(this.getClass().getName());</span><br><span class="line">        System.out.println(this.getClass().getCanonicalName());</span><br><span class="line">        System.out.println(this.getClass().getSimpleName());</span><br><span class="line">        System.out.println(“print end”);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;.printName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.testjava.testclassname.MyClassName$1</span><br><span class="line">null</span><br><span class="line"></span><br><span class="line">print end</span><br></pre></td></tr></table></figure>
+<p>结论：对于一个匿名内部类，getName()打印出来的是MyClassName$1, getCanonicalName()对于一个匿名内部类打印出了null, getSimpleName() 的结果则是一个空的字符串。</p>
+<h1 id="数组对象差别"><a href="#数组对象差别" class="headerlink" title="数组对象差别"></a>数组对象差别</h1><p>打印代码逻辑如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println((new Name[10]).getClass().getName());</span><br><span class="line">System.out.println((new Name[10]).getClass().getCanonicalName());</span><br><span class="line">System.out.println((new Name[10]).getClass().getSimpleName());</span><br><span class="line"></span><br><span class="line">System.out.println((new int[10]).getClass().getName());</span><br><span class="line">System.out.println((new int[10]).getClass().getCanonicalName());</span><br><span class="line">System.out.println((new int[10]).getClass().getSimpleName());</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Lcom.testjava.testclassname.Name;</span><br><span class="line">com.testjava.testclassname.Name[]</span><br><span class="line">Name[]</span><br><span class="line">[I</span><br><span class="line">int[]</span><br><span class="line">int[]</span><br></pre></td></tr></table></figure>
+<p>结论：对于数组类型，getName()通过一个或者多个 <code>[</code> 来表示数组，<code>[</code> 后面紧接着的是元素类型；   getCanonicalName() 则是用 <code>[]</code> 来表示数组，对于基础类型则是直接显示出来；getName() 同样也用 <code>[]</code> 来表示数组类型.</p>
+<blockquote>
+<p>附：<br>getName()中提到的元素类型，对应关系如下所示:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Element Type</th>
+<th align="left">Encoding</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">boolean</td>
+<td align="left">Z</td>
+</tr>
+<tr>
+<td align="left">byte</td>
+<td align="left">B</td>
+</tr>
+<tr>
+<td align="left">char</td>
+<td align="left">C</td>
+</tr>
+<tr>
+<td align="left">class or interface</td>
+<td align="left">Lclassname;</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">D</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">F</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">I</td>
+</tr>
+<tr>
+<td align="left">long</td>
+<td align="left">J</td>
+</tr>
+<tr>
+<td align="left">short</td>
+<td align="left">S</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2023/11/12/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -94,91 +187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 中的getName(), getCanonicalName()和getSimpleName()</title>
-    <url>/2018/08/09/getName-getCanonicalName-%E5%92%8CgetSimpleName/</url>
-    <content><![CDATA[<p>先定义一个类和一个它的内部类:</p>
-<span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Name &#123;</span><br><span class="line">  class InnerClass &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  void printName() &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="外部类的差别"><a href="#外部类的差别" class="headerlink" title="外部类的差别"></a>外部类的差别</h1><p>先打印出Name 的getName(), getCanonicalName()和getSimpleName() 这三个的值：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println(Name.class.getName());</span><br><span class="line">System.out.println(Name.class.getCanonicalName());</span><br><span class="line">System.out.println(Name.class.getSimpleName());</span><br></pre></td></tr></table></figure>
-
-<p>输出结果</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.testjava.testclassname.Name</span><br><span class="line">com.testjava.testclassname.Name</span><br><span class="line">Name</span><br></pre></td></tr></table></figure>
-
-<p>结论：可以看到对于一个外部类， getName() 和 getCanonicalName() 结果一样，都打印出了包含类的包名的路径，getSimpleName() 只打印出了不包含路径的简单的类名。</p>
-<h1 id="内部类的差别"><a href="#内部类的差别" class="headerlink" title="内部类的差别"></a>内部类的差别</h1><p>打印逻辑如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println(Name.InnerClass.class.getName());</span><br><span class="line">System.out.println(Name.InnerClass.class.getCanonicalName());</span><br><span class="line">System.out.println(Name.InnerClass.class.getSimpleName());</span><br></pre></td></tr></table></figure>
-
-<p>输出结果:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.testjava.testclassname.Name$InnerClass</span><br><span class="line">com.testjava.testclassname.Name.InnerClass</span><br><span class="line">InnerClass</span><br></pre></td></tr></table></figure>
-
-<p>结论：从结果看，getName() 使用了 <em>Name$InnerClass</em> 来标识InnerClass 是Name 的一个内部类，getCanonicalName() 则仍是打印出了和外部类一样的包名和路径，getSimpleName() 仍然只是打印出了简单的类名。</p>
-<h1 id="匿名内部类的差别"><a href="#匿名内部类的差别" class="headerlink" title="匿名内部类的差别"></a>匿名内部类的差别</h1><p>打印逻辑如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class MyClassName &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    new Name() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      void printName() &#123;</span><br><span class="line">        System.out.println(this.getClass().getName());</span><br><span class="line">        System.out.println(this.getClass().getCanonicalName());</span><br><span class="line">        System.out.println(this.getClass().getSimpleName());</span><br><span class="line">        System.out.println(“print end”);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;.printName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.testjava.testclassname.MyClassName$1</span><br><span class="line">null</span><br><span class="line"></span><br><span class="line">print end</span><br></pre></td></tr></table></figure>
-<p>结论：对于一个匿名内部类，getName()打印出来的是MyClassName$1, getCanonicalName()对于一个匿名内部类打印出了null, getSimpleName() 的结果则是一个空的字符串。</p>
-<h1 id="数组对象差别"><a href="#数组对象差别" class="headerlink" title="数组对象差别"></a>数组对象差别</h1><p>打印代码逻辑如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">System.out.println((new Name[10]).getClass().getName());</span><br><span class="line">System.out.println((new Name[10]).getClass().getCanonicalName());</span><br><span class="line">System.out.println((new Name[10]).getClass().getSimpleName());</span><br><span class="line"></span><br><span class="line">System.out.println((new int[10]).getClass().getName());</span><br><span class="line">System.out.println((new int[10]).getClass().getCanonicalName());</span><br><span class="line">System.out.println((new int[10]).getClass().getSimpleName());</span><br></pre></td></tr></table></figure>
-
-<p>输出结果如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Lcom.testjava.testclassname.Name;</span><br><span class="line">com.testjava.testclassname.Name[]</span><br><span class="line">Name[]</span><br><span class="line">[I</span><br><span class="line">int[]</span><br><span class="line">int[]</span><br></pre></td></tr></table></figure>
-<p>结论：对于数组类型，getName()通过一个或者多个 <code>[</code> 来表示数组，<code>[</code> 后面紧接着的是元素类型；   getCanonicalName() 则是用 <code>[]</code> 来表示数组，对于基础类型则是直接显示出来；getName() 同样也用 <code>[]</code> 来表示数组类型.</p>
-<blockquote>
-<p>附：<br>getName()中提到的元素类型，对应关系如下所示:</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left">Element Type</th>
-<th align="left">Encoding</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">boolean</td>
-<td align="left">Z</td>
-</tr>
-<tr>
-<td align="left">byte</td>
-<td align="left">B</td>
-</tr>
-<tr>
-<td align="left">char</td>
-<td align="left">C</td>
-</tr>
-<tr>
-<td align="left">class or interface</td>
-<td align="left">Lclassname;</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">D</td>
-</tr>
-<tr>
-<td align="left">float</td>
-<td align="left">F</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">I</td>
-</tr>
-<tr>
-<td align="left">long</td>
-<td align="left">J</td>
-</tr>
-<tr>
-<td align="left">short</td>
-<td align="left">S</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>编写一个Android本地Gradle插件</title>
     <url>/2018/07/10/%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAAndroid%E6%9C%AC%E5%9C%B0Gradle%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<p>本文主要讲述如何创建一个可以在本地使用的 gradle 插件。具体步骤如下文所示:</p>
@@ -232,13 +240,5 @@
         <tag>Android</tag>
         <tag>Gradle</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>I am back</title>
-    <url>/2023/11/12/I-am-back/</url>
-    <content><![CDATA[<p>I am back !!!!</p>
-<span id="more"></span>
-<p>New day.New start!</p>
-]]></content>
   </entry>
 </search>
