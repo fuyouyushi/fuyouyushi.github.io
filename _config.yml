@@ -87,3 +87,10 @@ deploy:
 auto_excerpt:
   enable: false
   length: 150
+
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+  limit: 10000
