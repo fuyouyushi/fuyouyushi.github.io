@@ -1,5 +1,6 @@
 ---
 title: Hexo 的安装和配置
+tags: hexo
 ---
 
 ## hexo 的安装
